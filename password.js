@@ -1,3 +1,12 @@
+function isVercel() {
+    return window.location.hostname.includes('vercel.app');
+}
+function updateHomeButton() {
+    const homeButton = document.querySelector('.back-button');
+    if (homeButton && isVercel()) {
+        homeButton.href = 'https://accueil-loris.vercel.app';
+    }
+}
 const passwordInput = document.getElementById("password");
 const copyBtn = document.getElementById("copy-btn");
 const generateBtn = document.getElementById("generate");
@@ -36,3 +45,4 @@ function copyPassword() {
 }
 generateBtn.addEventListener("click", generatePassword);
 copyBtn.addEventListener("click", copyPassword);
+document.addEventListener('DOMContentLoaded', updateHomeButton);
